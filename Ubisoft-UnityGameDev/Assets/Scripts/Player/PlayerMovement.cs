@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerTransform;
     public float moveSpeed = 5f;
 
-    public bool isGrounded = false;
+    private bool isGrounded = false;
     public float jumpForce = 5f;
 
     private bool facingRight = false;
@@ -24,7 +24,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float input = Input.GetAxisRaw("Horizontal");
+        float input = 0f;
+        if (Input.GetKey("d"))
+        {
+            input = 1f;
+        }
+        if (Input.GetKey("a"))
+        {
+            input = -1f;
+        }
+
         rb.velocity = new Vector2(input * moveSpeed, rb.velocity.y);
         playerAnimator.SetFloat("Player_speed", Mathf.Abs(input));
 
@@ -49,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if(isGrounded && Input.GetButtonDown("Jump"))
+        if(isGrounded && Input.GetKey("space"))
         {
             rb.velocity = Vector2.up * jumpForce;
             isGrounded = false;
@@ -64,5 +73,10 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
             playerAnimator.SetBool("isJumping", !isGrounded);
         }
+    }
+
+    public bool isPlayerGrounded()
+    {
+        return isGrounded;
     }
 }
