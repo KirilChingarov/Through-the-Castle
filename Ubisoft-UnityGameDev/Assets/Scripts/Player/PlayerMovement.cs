@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Animator playerAnimator;
+
     private Rigidbody2D rb;
     private Transform playerTransform;
     public float moveSpeed = 5f;
@@ -13,18 +15,18 @@ public class PlayerMovement : MonoBehaviour
 
     private bool facingRight = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerTransform = GetComponent<Transform>();
+        playerAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         float input = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(input * moveSpeed, rb.velocity.y);
+        playerAnimator.SetFloat("Player_speed", Mathf.Abs(input));
 
         Flip(input);
 
@@ -51,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
             isGrounded = false;
+            playerAnimator.SetBool("isJumping", !isGrounded);
         }
     }
 
@@ -59,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            playerAnimator.SetBool("isJumping", !isGrounded);
         }
     }
 }
