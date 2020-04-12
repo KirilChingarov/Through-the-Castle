@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackRange : MonoBehaviour
+public class PlayerAttackRange : MonoBehaviour
 {
     private bool inRange = false;
     private EnemyController enemy;

@@ -11,15 +11,12 @@ public class PlayerAttackController : MonoBehaviour
     private Animator playerAnimator;
 
     public GameObject attackRange;
-    private AttackRange attack;
-
-    private PlayerMovement playerMovement;
+    private PlayerAttackRange attack;
 
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
         playerAnimator = GetComponent<Animator>();
-        attack = attackRange.GetComponent<AttackRange>();
+        attack = attackRange.GetComponent<PlayerAttackRange>();
     }
 
     void Update()

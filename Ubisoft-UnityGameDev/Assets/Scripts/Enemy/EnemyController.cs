@@ -22,10 +22,6 @@ public class EnemyController : MonoBehaviour
         {
             Die();
         }
-        /*else
-        {
-
-        }*/
     }
 
     public void takeDamage(float damage)
@@ -34,14 +30,19 @@ public class EnemyController : MonoBehaviour
         enemyAnimator.SetTrigger("isTakingDamage");
     }
 
+    public bool isEnemyDead()
+    {
+        return controller.isCharacterDead();
+    }
+
     void Die()
     {
         enemyAnimator.Play("Death");
-        Debug.Log(name + " died!");
     }
 
     void DestroyEnemy()
     {
+        Debug.Log(name + " died!");
         Destroy(gameObject);
     }
 }

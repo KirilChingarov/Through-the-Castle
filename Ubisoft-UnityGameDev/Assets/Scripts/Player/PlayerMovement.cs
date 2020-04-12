@@ -25,17 +25,17 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         float input = 0f;
-        if (Input.GetKey("d"))
+        if (Input.GetKey(KeyCode.D))
         {
             input = 1f;
         }
-        if (Input.GetKey("a"))
+        if (Input.GetKey(KeyCode.A))
         {
             input = -1f;
         }
 
         rb.velocity = new Vector2(input * moveSpeed, rb.velocity.y);
-        playerAnimator.SetFloat("Player_speed", Mathf.Abs(input));
+        playerAnimator.SetFloat("PlayerSpeed", Mathf.Abs(input));
 
         Flip(input);
 
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if(isGrounded && Input.GetKey("space"))
+        if(isGrounded && Input.GetKey(KeyCode.Space))
         {
             rb.velocity = Vector2.up * jumpForce;
             isGrounded = false;
