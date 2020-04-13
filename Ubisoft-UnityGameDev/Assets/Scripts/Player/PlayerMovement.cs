@@ -79,4 +79,15 @@ public class PlayerMovement : MonoBehaviour
     {
         return isGrounded;
     }
+
+    public void freezePosition()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+    }
+
+    public void unfreezePosition()
+    {
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 }

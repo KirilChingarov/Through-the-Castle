@@ -38,6 +38,8 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         enemyAnimator.Play("Death");
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        GetComponent<Collider2D>().enabled = false;
     }
 
     void DestroyEnemy()
