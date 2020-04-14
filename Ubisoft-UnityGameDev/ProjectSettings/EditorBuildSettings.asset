@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/IntroBattle.unity
+    guid: 74dda76b78002474c9cac4321a57c878
+  - enabled: 1
+    path: Assets/Scenes/BossBattle.unity
+    guid: 4c78e9045332d274194c463476f6d22e
   m_configObjects: {}

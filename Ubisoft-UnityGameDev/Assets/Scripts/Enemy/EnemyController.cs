@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float enemyHealth = 100f;
-    CharacterController controller;
+    CharacterHealth controller;
     Animator enemyAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        controller = new CharacterController(enemyHealth);
+        controller = new CharacterHealth(enemyHealth);
         enemyAnimator = GetComponent<Animator>();
     }
 

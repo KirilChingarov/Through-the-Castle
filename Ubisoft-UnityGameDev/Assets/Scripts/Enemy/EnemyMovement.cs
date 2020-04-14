@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     public Transform target;
     private Transform enemy;
     private Rigidbody2D rb;
+    private RigidbodyConstraints2D rbConstraints;
     private Animator enemyAnimator;
 
     public GameObject aggroRange;
@@ -23,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
         aggro = aggroRange.GetComponent<AggroController>();
         enemy = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
+        rbConstraints = rb.constraints;
         enemyAnimator = GetComponent<Animator>();
     }
 
@@ -84,5 +86,17 @@ public class EnemyMovement : MonoBehaviour
         {
             targetReached = false;
         }
+    }
+
+    public void freezePosition()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+    }
+
+    public void unfreezePosition()
+    {
+        //rb.constraints = RigidbodyConstraints2D.None;
+        //rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+        rb.constraints = rbConstraints;
     }
 }

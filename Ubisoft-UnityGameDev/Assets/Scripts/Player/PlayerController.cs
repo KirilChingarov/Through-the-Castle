@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    CharacterController controller;
+    CharacterHealth controller;
     public float playerHealth = 100f;
+
+    public HealthBar healthBar;
 
     private Animator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        controller = new CharacterController(playerHealth);
+        controller = new CharacterHealth(playerHealth);
+        healthBar.setMaxHealth(playerHealth);
         playerAnimator = GetComponent<Animator>();
     }
 
@@ -28,7 +31,13 @@ public class PlayerController : MonoBehaviour
     public void takeDamage(float damage)
     {
         controller.takeDamage(damage);
+        healthBar.setHealth(getHealth());
         playerAnimator.SetTrigger("isTakingDamage");
+    }
+
+    public float getHealth()
+    {
+        return controller.getHealth();
     }
 
     void Die()

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController
+public class CharacterHealth
 {
     private float health;
     private bool isDead = false;
 
-    public CharacterController()
+    public CharacterHealth()
     {
         health = 10f;
     }
 
-    public CharacterController(float health)
+    public CharacterHealth(float health)
     {
         this.health = health;
     }
@@ -24,6 +24,11 @@ public class CharacterController
         {
             isDead = true;
         }
+    }
+
+    public float getHealth()
+    {
+        return health;
     }
 
     public bool isCharacterDead()
