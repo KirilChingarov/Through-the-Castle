@@ -30,6 +30,11 @@ public class EnemyController : MonoBehaviour
         enemyAnimator.SetTrigger("isTakingDamage");
     }
 
+    public float getHealth()
+    {
+        return controller.getHealth();
+    }
+
     public bool isEnemyDead()
     {
         return controller.isCharacterDead();
