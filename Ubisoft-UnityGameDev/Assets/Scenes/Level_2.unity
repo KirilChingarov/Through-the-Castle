@@ -4845,7 +4845,6 @@ GameObject:
   - component: {fileID: 1540719859814899027}
   - component: {fileID: 1694080609510466653}
   - component: {fileID: 1546708923173746216}
-  - component: {fileID: 1546708923173746219}
   m_Layer: 9
   m_Name: Door_Enter
   m_TagString: Untagged
@@ -4853,18 +4852,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1546708923173746219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546708923173746217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f827328cfafb534a957c21d5fbb87e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1694080609510466653
 SpriteRenderer:
   m_ObjectHideFlags: 0

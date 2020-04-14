@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GetComponent<PlayerController>().getHealth() <= 0) return;
+
         float input = 0f;
         if (Input.GetKey(KeyCode.D))
         {

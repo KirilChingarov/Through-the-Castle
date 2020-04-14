@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,14 +41,23 @@ public class PlayerController : MonoBehaviour
         return controller.getHealth();
     }
 
-    void Die()
+    public void Die()
     {
         playerAnimator.Play("Death");
+        //GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+
+        /*Debug.Log("Player has died!");
+        Destroy(gameObject);
+
+        SceneManager.LoadScene("EndMenu");*/
+
     }
 
-    void DestroyPlayer()
+    public void DestroyPlayer()
     {
         Debug.Log("Player has died!");
         Destroy(gameObject);
+
+        SceneManager.LoadScene("EndMenu");
     }
 }
