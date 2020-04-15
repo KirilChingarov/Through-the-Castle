@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
 
     private bool isGrounded = false;
+    private bool isAttacking = false;
     public float jumpForce = 5f;
 
     private bool facingRight = false;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         {
             input = -1f;
         }
+        if (isAttacking) input = 0f;
 
         rb.velocity = new Vector2(input * moveSpeed, rb.velocity.y);
         playerAnimator.SetFloat("PlayerSpeed", Mathf.Abs(input));
@@ -84,12 +86,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void freezePosition()
     {
-        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        isAttacking = true;
     }
 
     public void unfreezePosition()
     {
-        rb.constraints = RigidbodyConstraints2D.None;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        isAttacking = false;
     }
 }

@@ -7,7 +7,6 @@ public class EnemyMovement : MonoBehaviour
     public Transform target;
     private Transform enemy;
     private Rigidbody2D rb;
-    private RigidbodyConstraints2D rbConstraints;
     private Animator enemyAnimator;
 
     public GameObject aggroRange;
@@ -15,20 +14,18 @@ public class EnemyMovement : MonoBehaviour
 
     public float enemySpeed = 3f;
 
-    private bool targetReached = false;
+    public bool targetReached = false;
     private bool facingRight = false;
+    private bool isAttacking = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         aggro = aggroRange.GetComponent<AggroController>();
         enemy = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        rbConstraints = rb.constraints;
         enemyAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!aggro.isPlayerInAggro())
@@ -50,6 +47,7 @@ public class EnemyMovement : MonoBehaviour
     float getDirection()
     {
         if (targetReached) return 0f;
+        if (isAttacking) return 0f;
 
         if (target.position.x > enemy.position.x)
         {
@@ -72,14 +70,6 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            targetReached = true;
-        }
-    }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -88,15 +78,21 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            targetReached = true;
+        }
+    }
+
     public void freezePosition()
     {
-        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        isAttacking = true;
     }
 
     public void unfreezePosition()
     {
-        //rb.constraints = RigidbodyConstraints2D.None;
-        //rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
-        rb.constraints = rbConstraints;
+        isAttacking = false;
     }
 }

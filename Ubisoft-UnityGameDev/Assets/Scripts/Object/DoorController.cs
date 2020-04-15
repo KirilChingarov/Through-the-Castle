@@ -7,7 +7,6 @@ public class DoorController : MonoBehaviour
 {
     private bool playerInRange = false;
 
-    // Update is called once per frame
     void Update()
     {
         if (playerInRange && Input.GetKey(KeyCode.W))

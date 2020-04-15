@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
 
     private Animator playerAnimator;
 
-    // Start is called before the first frame update
     void Start()
     {
         controller = new CharacterHealth(playerHealth);
@@ -20,7 +19,6 @@ public class PlayerController : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (controller.isCharacterDead())
@@ -44,12 +42,6 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         playerAnimator.Play("Death");
-        //GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-
-        /*Debug.Log("Player has died!");
-        Destroy(gameObject);
-
-        SceneManager.LoadScene("EndMenu");*/
 
     }
 
