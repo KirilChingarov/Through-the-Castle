@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player has died!");
         Destroy(gameObject);
 
-        SceneManager.LoadScene("EndMenu");
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 }

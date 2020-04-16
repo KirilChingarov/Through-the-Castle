@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Text: 'Attack:
 
 
-    You can attack with "LMB"'
+    You can attack with "E"'
 --- !u!222 &1764409961
 CanvasRenderer:
   m_ObjectHideFlags: 0

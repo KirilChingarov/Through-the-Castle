@@ -21,7 +21,7 @@ public class PlayerAttackController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("LeftMouseButton") && nextAttack <= Time.time)
+        if (Input.GetKeyDown(KeyCode.E) && nextAttack <= Time.time)
         {
             playerAnimator.SetTrigger("Attack");
             nextAttack = Time.time + attackCooldown;
